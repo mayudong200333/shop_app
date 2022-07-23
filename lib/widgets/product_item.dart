@@ -28,8 +28,15 @@ class ProductItem extends StatelessWidget {
                 arguments: product.id,
               );
             },
-            child:
-                Image.network(product.imageUrl as String, fit: BoxFit.cover)),
+            child: Hero(
+              tag: product.id as String,
+              child: FadeInImage(
+                placeholder:
+                    AssetImage('assets/images/product-placeholder.png'),
+                image: NetworkImage(product.imageUrl as String),
+                fit: BoxFit.cover,
+              ),
+            )),
         footer: GridTileBar(
           leading: Consumer<Product>(
             builder: (ctx, product, _) => IconButton(
